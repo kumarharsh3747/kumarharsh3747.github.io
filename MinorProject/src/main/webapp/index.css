@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Tiro Gurmukhi', serif;
+    font-family: 'Ubuntu', sans-serif
+      /* font-size: 18px; */
+      /* background-color: #24252A; */
+  }
+
+  header a {
+    color: white;
+    text-decoration: none;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+
+    height: 50px;
+    background-color: red;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 3%;
+
+  }
+
+  .logo {
+    cursor: pointer;
+    margin-right: auto;
+
+
+  }
+
+  .nav__links {
+    list-style: none;
+  }
+
+  .nav__links li {
+    margin: 0px 2px;
+    display: inline-block;
+    padding: 0px 30px;
+  }
+
+  .nav__links li a {
+    transition: all 0.3s ease 0s;
+  }
+
+  .nav__links li a:hover {
+    color: gray;
+  }
+  
+
+  header a:hover {
+    color: white;
+  }
+
+  .heading {
+    text-align: center;
+  }
+
+  .b {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+
+  .text-box {
+  width: 80%;
+  color: black;
+  position: absolute;
+  top: 55%;
+  left: 21%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Neuton", serif;
+  line-height: 50px;
+}
+
+.text-box h1 {
+  font-size: 70px;
+  font-family: "Neuton", serif;
+  letter-spacing: 5px;
+  line-height:  50px;
+  font-weight: 600; 
+  margin: 0;
+}
+
+.text-box p {
+  margin: 10px 0 40px;
+  font-family: "Neuton", serif;
+  font-size: 26px;
+  color: black;
+  font-weight: 300;
+  padding: 10px;
+  line-height: 20px;
+}
+
+
+
+#nav {
+width: 90%;
+color: black;
+position: absolute;
+top: 10%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+font-family: "Neuton", serif;
+line-height: 50px;
+}
+
+#nav img {
+width: 150px;
+padding-left: 20px;
+padding-top: 10px;
+top: 0%;
+}
+
+#nav .header-list {
+flex: 1;
+text-align: right;
+}
+
+.header-list ul li {
+list-style: none;
+display: inline-block;
+padding: 8px 15px;
+position: relative;
+}
+
+.header-list ul li a {
+color: black;
+font-size: 22px;
+text-decoration: none;
+font-family: "Fredoka One", cursive;
+}
+
+.header-list ul li::after {
+content: "";
+height: 2px;
+background: #cd5c5c;
+display: block;
+margin: auto;
+transition: 0.5s;
+width: 0%;
+}
+
+.header-list ul li:hover::after {
+width: 100%;
+}
+
+
+
+#homevideo {
+  height: auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+#logo {
+position: absolute;
+top: 9%;
+left: 5%;
+transform: translate(-50%, -50%);
+text-align: center;
+font-family: "Neuton", serif;
+line-height: 30px;
+margin-bottom: 10px;
+}
+
+.hero-btn {
+border-radius: 5px;
+display: inline-block;
+text-decoration: none;
+color: black;
+border: 2px solid black;
+border-radius: 5px 20px 5px;
+padding: 12px 30px;
+font-size: 35px;
+background: transparent;
+position: relative;
+cursor: pointer;
+width: 30vh;
+letter-spacing: 3px;
+height: 12vh;
+font-family: "Patrick Hand SC", cursive;
+
+}
+
+.hero-btn:hover {
+border: 1px solid #cd5c5c;
+background: #cd5c5c;
+transition: 1s;
+font-weight: 300;
+}
+
+
+.bottom-title{
+position: relative;
+  font-size: 42px;
+  line-height: 1.4em;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.sty::marker{
+color:red;
+}

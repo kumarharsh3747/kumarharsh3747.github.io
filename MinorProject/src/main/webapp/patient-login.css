@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Tiro Gurmukhi', serif;
+    font-family: 'Ubuntu', sans-serif
+        /* font-size: 18px; */
+        /* background-color: #24252A; */
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+
+    height: 50px;
+    background-color: red;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 3%;
+
+}
+
+.logo {
+    cursor: pointer;
+    margin-right: auto;
+
+
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    margin: 0px 2px;
+    display: inline-block;
+    padding: 0px 30px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+    color: gray;
+}
+
+header a:hover {
+    color: white;
+}
+
+
+.back-color {
+
+    height: 745px;
+    padding-top: 45px;
+
+    border-radius: 0px;
+    background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
+}
+
+.conten {
+
+
+    border-radius: 20px;
+    background-color: white;
+    max-width: 730px;
+    height: 500px;
+    margin: 65px auto;
+    box-sizing: border-box;
+    padding: 0;
+    display: block;
+
+}
+
+.card-cont {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-heading {
+    background-color: black;
+    padding: 20px 0;
+    border-radius: 8px;
+}
+
+.card-heading h1 {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
+
+}
+
+.form-body {
+    padding: 0px 70px;
+    padding-bottom: 73px;
+}
+
+.in {
+
+    /* padding: -10px 14px; */
+    height: 50px;
+    margin: 63px 19px;
+
+}
+
+.in-sty {
+    width: 432px;
+    height: 39px;
+    padding: 20px;
+    margin-left: 22px;
+    border-radius: 7px
+}
