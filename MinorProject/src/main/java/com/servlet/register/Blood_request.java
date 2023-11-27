@@ -70,7 +70,7 @@ public class Blood_request extends HttpServlet{
             }
             else {
                 pw.println("Record Stored into Database");
-                RequestDispatcher rd=req.getRequestDispatcher("/request-history2.html");
+                RequestDispatcher rd=req.getRequestDispatcher("/request-history.jsp");
                 rd.include(req, res);
             }
         }catch(SQLException se) {

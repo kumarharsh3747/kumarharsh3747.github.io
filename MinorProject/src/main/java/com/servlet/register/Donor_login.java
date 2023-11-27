@@ -30,7 +30,7 @@ public class Donor_login extends HttpServlet {
 			ps.setString(2,p);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
-				RequestDispatcher rd=request.getRequestDispatcher("/admin-blood-stock.html");
+				RequestDispatcher rd=request.getRequestDispatcher("/Donor-dash.html");
 				rd.forward(request,response);
 				}
 			else {

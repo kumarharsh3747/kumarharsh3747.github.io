@@ -29,7 +29,7 @@ public class Admin_login extends HttpServlet {
 			ps.setString(2,p);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
-				RequestDispatcher rd=request.getRequestDispatcher("/admin-blood-stock.html");
+				RequestDispatcher rd=request.getRequestDispatcher("/admin-home.html");
 				rd.forward(request,response);
 				}
 			else {

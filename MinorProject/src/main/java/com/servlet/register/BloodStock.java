@@ -14,11 +14,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/pregister")
-public class Register_servlet extends HttpServlet{
+@WebServlet("/bldstock")
+public class BloodStock extends HttpServlet{
 
     //create the query
-    private static final String INSERT_QUERY ="INSERT INTO USER(name, username, password, gender, bloodgroup, age, disease, doctor, address, mobile) VALUES(?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_QUERY ="INSERT INTO bloodstock(bloodgroup, unit) VALUES(?,?)";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -27,16 +27,11 @@ public class Register_servlet extends HttpServlet{
         //set Content type
         res.setContentType("text/html");
         //read the form values
-        String name = req.getParameter("name");
-        String username = req.getParameter("un");
-        String password = req.getParameter("ps");
-        String gender = req.getParameter("gender");
+      
         String bloodgroup = req.getParameter("bgroup");
-        int age=Integer.parseInt(req.getParameter("age"));
-        String disease = req.getParameter("dise");
-        String doctor = req.getParameter("doc");
-        String address = req.getParameter("addr");
-        String mobile = req.getParameter("mob");
+        int unit=Integer.parseInt(req.getParameter("unit"));
+    
+     
 
 
         //load the jdbc driver
@@ -50,16 +45,9 @@ public class Register_servlet extends HttpServlet{
         try(Connection con = DriverManager.getConnection("jdbc:mysql:///1page","root","root");
                 PreparedStatement ps = con.prepareStatement(INSERT_QUERY);){
             //set the values
-            ps.setString(1, name);
-            ps.setString(2, username);
-            ps.setString(3, password);
-            ps.setString(4, gender);
-            ps.setString(5,bloodgroup );
-            ps.setInt(6,age );
-            ps.setString(7,disease);
-            ps.setString(8,doctor);
-            ps.setString(9,address);
-            ps.setString(10,mobile);
+            ps.setString(1,bloodgroup );
+            ps.setInt(2,unit );
+
 
             //execute the query
             int count = ps.executeUpdate();
@@ -70,7 +58,7 @@ public class Register_servlet extends HttpServlet{
             }
             else {
                 pw.println("Record Stored into Database");
-                RequestDispatcher rd=req.getRequestDispatcher("/patient-login.html");
+                RequestDispatcher rd=req.getRequestDispatcher("/admin-blood-stock.jsp");
                 rd.include(req, res);
             }
         }catch(SQLException se) {

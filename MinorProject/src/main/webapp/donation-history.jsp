@@ -1,3 +1,23 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%
+String id = request.getParameter("donate");
+String driver = "com.mysql.cj.jdbc.Driver";
+String connectionUrl = "jdbc:mysql://localhost:3306/";
+String database = "1page";
+String userid = "root";
+String password = "root";
+try {
+Class.forName(driver);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+Connection connection = null;
+Statement statement = null;
+ResultSet resultSet = null;
+%>
 <!doctype html>
 <html lang="en">
 
@@ -10,10 +30,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-   <!-- logo  -->
-   <link rel="icon" href="../logo.png" type="image/icon type">
+     <!-- logo  -->
+     <link rel="icon" href="../logo.png" type="image/icon type">
 
-    <!-- google fonts -->
+  <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
@@ -23,7 +43,7 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
-  <title>Blood Request</title>
+  <title>Donation History</title>
 
   <style>
     * {
@@ -43,11 +63,11 @@
     }
 
     header {
-      /* position: fixed;
+      position: fixed;
       top: 0;
       right: 0;
       left: 0;
-      z-index: 1030; */
+      z-index: 1030;
 
       height: 50px;
       background-color: red;
@@ -64,8 +84,8 @@
 
       border-radius: 20px;
       background-color: white;
-      max-width: 730px;
-      height: 567px;
+      max-width: 946px;
+      height: 540px;
       margin: 0 auto;
       box-sizing: border-box;
       padding: 0;
@@ -141,12 +161,19 @@
     }
 
     .main {
+      width: 88%;
+      /* background-color: #F3F5F9; */
+      padding-left: 42px;
+      padding-right: 42px;
+      height: 639px;
+      margin-top: 50px;
+      margin-left: 203px;
 
 
-      width: 1318px;
-      background-color: #F3F5F9;
-      padding: 42px;
-      background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
+      /* width: 1058px;
+            background-color: #F3F5F9;
+            padding: 42px; */
+      /* background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%); */
     }
 
     .form-body {
@@ -188,12 +215,15 @@
       margin-left: 22px;
       border-radius: 7px
     }
+
+    /* .status{
+          border: 2px solid red;
+        } */
   </style>
 
 </head>
 
 <body>
-	<form action="request" method="get">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
@@ -202,65 +232,63 @@
   <header>
 
 
-    <a href="#" class="logo"> <i class="fas fa-heartbeat"
-        style='font-size:23px;color:white'></i>
+    <a href="#" class="logo"> <i class="fas fa-heartbeat" style='font-size:23px;color:white'></i>
       <b style="font-size: 23px">&nbsp;Blood Bank Management</b></a>
 
     <nav>
 
       <!-- <ul class="nav__links" style="margin-top: 14px">
-        <li><a href="http://localhost/BBMS/index.html"><i class="fas fa-home"></i>&nbsp;Home</i></a></li>
+                <li><a href="http://localhost/BBMS/index.html"><i class="fas fa-home"></i>&nbsp;Home</i></a></li>
 
-        <li><a href="#"><i class="fas fa-procedures"></i>&nbsp; Patient</i></a>
-        </li>
-        <li><a href="donor-login.html"><i class="fas fa-user"></i>&nbsp; Donor</i></a>
-        </li>
-        <li><a href="../admin/admin-login.html"><i class="fas fa-user-shield"></i>&nbsp; Admin</i></a>
-        </li>
-      </ul> -->
+                <li><a href="#"><i class="fas fa-procedures"></i>&nbsp; Patient</i></a>
+                </li>
+                <li><a href="donor-login.html"><i class="fas fa-user"></i>&nbsp; Donor</i></a>
+                </li>
+                <li><a href="../admin/admin-login.html"><i class="fas fa-user-shield"></i>&nbsp; Admin</i></a>
+                </li>
+            </ul> -->
       </div>
     </nav>
 
   </header>
-
-  
-
-  <!-- side bar --> 
+  <!-- side bar -->
   <div class="side-bar">
 
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar" >
-      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar" style="    position: fixed;
+    margin-top: 50px;">
+      <a href="donor-dash.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <h3 style="margin-left: 16px;
         margin-bottom: auto;">Dashboard</h3>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="patient-dash.jsp" class="nav-link text-white" aria-current="page">
+          <a href="donor-dash.html" class="nav-link text-white" aria-current="page">
             <i class="fas fa-home">
               <use xlink:href="#home"></use>
             </i>
             &nbsp;Home
           </a>
         </li>
-        
         <li>
-          <a href="#" class="nav-link active">
-            <i class="fas fa-hand-holding-heart"></i>&nbsp;&nbsp;Blood Request
+          <a href="donate-blood.html" class="nav-link text-white">
+            <i class="fas fa-hand-holding-heart"></i>
+            &nbsp;Donate Blood
           </a>
         </li>
         <li>
-          <a href="request-history.jsp" class="nav-link text-white">
-            <i class="fas fa-history"></i>&nbsp;&nbsp;Request History
+          <a href="donation-history.html" class="nav-link active">
+            <i class="fas fa-history"></i>&nbsp;&nbsp;Donation History
           </a>
         </li>
+      
       </ul>
       <hr>
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
           data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fas fa-user" width="32" height="32" class="rounded-circle me-2"></i>
-          <strong>&nbsp;&nbsp;&nbsp;Patient&nbsp;</strong>
+          <strong>&nbsp;&nbsp;&nbsp;Donor&nbsp;</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
           <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -269,7 +297,7 @@
           <li>
             <hr class="dropdown-divider">
           </li> -->
-          <li><a class="dropdown-item" href="patient-login.html">Sign out</a></li>
+          <li><a class="dropdown-item" href="donor-login.html">Sign out</a></li>
         </ul>
       </div>
     </div>
@@ -281,64 +309,48 @@
 
     <div class="main">
 
+      <div class="cont-card">
+        <h2 style="text-align: center; margin-top: 36px;">DONATION HISTORY</h2>
+        <br>
 
+        <table class="table table-bordered"
+          style="text-align: center;  vertical-align: middle; background-color: #F3F5F9;">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" style="text-align:center;">Name</th>
+              <th scope="col" style="text-align:center;">Disease</th>
+              <th scope="col" style="text-align:center;">Age</th>
+              <th scope="col" style="text-align:center;">Date and Time</th>
+              <th scope="col" style="text-align:center;">Status</th>
+            </tr>
+          </thead>
+				<%
+				try{
+					connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+					statement=connection.createStatement();
+					String sql ="select * from donate";
+					resultSet = statement.executeQuery(sql);
+					while(resultSet.next()){
+					%>
+					<tr>
+					<td><%=resultSet.getString("name") %></td>
+					
+					<td><%=resultSet.getString("disease") %></td>
+					<td><%=resultSet.getString("age") %></td>
+					
 
-      <div class="conten">
-        <div class="card-cont">
-          <div class="card-heading">
-            <h1>Blood Request</h1>
-          </div>
-          <div class="card-body">
-
-            <form method="post">
-              <div class="form-body">
-                <div class="in" style="margin-top: 20px;margin-left: -28px;margin-bottom: 14px;">
-                  <label for="p_name" style="font-size: 18px">Patient Name</label>
-                  <input type="text" name="p_name" placeholder="Name" required class="in-sty">
-                </div>
-                <div class="in" style="margin-left: -12px;margin-top: 36px; margin-bottom: 34px;">
-                  <label for="p_age" style="font-size: 18px">Patient age</label>
-                  <input type="text" name="p_age" required placeholder="Age" class="in-sty">
-                </div>
-                <div class="in" style="margin-top: 40px;margin-left: 15px;margin-bottom: 14px;">
-                  <label for="reason" style="font-size: 18px">Reason</label>
-                  <input type="text" name="reason" required placeholder="Reason" class="in-sty">
-                </div>
-                <select class="form-select form-select-sm" required aria-label=".form-select-sm example" style="width: 168px; display: inline; margin-left: 4px"  name="p_bgroup">
-                  <option selected>Select Blood Group</option>
-                  <option value="A+">A+</option>
-                  <option value="B+">B+</option>
-                  <option value="AB+">AB+</option>
-                  <option value="O+">O+</option>
-                  <option value="A-">A-</option>
-                  <option value="B-">B-</option>
-                  <option value="AB-">AB-</option>
-                  <option value="O-">O-</option>
-                </select>
-                <div class="in" style="margin-left:46px;margin-top: 20px;margin-bottom: 22px;">
-                  <label for="p_unit" style="font-size: 18px">Unit</label>
-                  <input type="number" name="p_unit" required id="unit" placeholder="Number of Units" class="in-sty">
-                </div>
-
-                <div style=" margin-left: 54px;
-                height: 6px;">
-                  <input class="btn btn--radius-2 btn-danger" type="submit" value="Request" name="sub" style="width: 94px;
-                  height: 47px;">
-                </div>
-              </div>
-            </form>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
+					</tr>
+<%
+}
+connection.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
 
 
 
 
-</form>
 
 </body>
 
