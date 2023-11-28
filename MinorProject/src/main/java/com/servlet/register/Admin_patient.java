@@ -15,11 +15,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/donate")
-public class donateBlood extends HttpServlet{
+@WebServlet("/request1")
+public class Admin_patient extends HttpServlet{
 
     //create the query
-    private static final String INSERT_QUERY ="INSERT INTO DONATE(name,disease,age,username,bloodgroup) VALUES(?,?,?,?,?)";
+    private static final String INSERT_QUERY ="UPDATE request SET status = ? ";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -28,15 +28,9 @@ public class donateBlood extends HttpServlet{
         //set Content type
         res.setContentType("text/html");
         //read the form values
-        String name = req.getParameter("name");
-        String disease = req.getParameter("dise");
-        int age=Integer.parseInt(req.getParameter("age"));
-        String username = req.getParameter("un");
-        String bloodgroup = req.getParameter("bgroup");
+        String status = req.getParameter("approve");
+       
         
-   
-
-        //load the driver
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -47,15 +41,10 @@ public class donateBlood extends HttpServlet{
         try(Connection con = DriverManager.getConnection("jdbc:mysql:///1page","root","root");
                 PreparedStatement ps = con.prepareStatement(INSERT_QUERY);){
             //set the values
-            ps.setString(1, name);
+            ps.setString(1, status);
+           
             
-            ps.setString(2,disease );
-            ps.setInt(3,age );
-            ps.setString(4,username);
-            ps.setString(5,bloodgroup);
-            
-            
-            
+          
             //execute the query
             int count = ps.executeUpdate();
 
@@ -65,8 +54,9 @@ public class donateBlood extends HttpServlet{
             }
             else {
                 pw.println("Record Stored into Database");
-                RequestDispatcher rd=req.getRequestDispatcher("/donation-history.jsp");
-                rd.include(req, res);
+                RequestDispatcher rd=req.getRequestDispatcher("/admin-blood-request.jsp");
+				rd.forward(req,res);
+               
             }
         }catch(SQLException se) {
             pw.println(se.getMessage());

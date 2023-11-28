@@ -3,7 +3,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%
-String id = request.getParameter("");
+String id = request.getParameter("request");
 String driver = "com.mysql.cj.jdbc.Driver";
 String connectionUrl = "jdbc:mysql://localhost:3306/";
 String database = "1page";
@@ -42,7 +42,7 @@ ResultSet resultSet = null;
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
-  <title>Donors Details</title>
+  <title>Blood Donation Details</title>
 
   <style>
     * {
@@ -210,7 +210,7 @@ ResultSet resultSet = null;
                 </a>
               </li>
               <li>
-                <a href="donor-list.jsp" class="nav-link active">
+                <a href="donor-list.jsp" class="nav-link  text-white">
                   <i class="fas fa-user">
                     <use xlink:href="#speedometer2"></use>
                   </i>
@@ -228,7 +228,7 @@ ResultSet resultSet = null;
                 </a>
               </li>
               <li>
-                <a href="admin-donation.jsp" class="nav-link text-white">
+                <a href="admin-donation.jsp" class="nav-link active">
                   <i class="far fa-heart">
                     <use xlink:href="#grid"></use>
                   </i>
@@ -287,48 +287,46 @@ ResultSet resultSet = null;
 
     <div class="main">
         <div class="cont-card">
-          <h2 style="text-align: center; margin-top: 36px;">DONOR DETAILS</h2>
-          <br>
+            <h2 style="text-align: center; margin-top: 36px;">BLOOD DONATION DETAILS</h2>
+            <br>
           
-          <table class="table table-bordered" style="text-align: center;  vertical-align: middle; background-color: #F3F5F9;">
+            <table class="table table-bordered" style="text-align: center;  vertical-align: middle; background-color: #F3F5F9;">
             <thead class="table-dark">
               <tr>
-                
-                <th scope="col">Name</th>
-                <th scope="col">username</th>
-                
-                <th scope="col">Gender</th>
-                <th scope="col">Blood Group</th>
+                <th scope="col">Donor Name</th>
+                <th scope="col">Disease</th>
                 <th scope="col">Age</th>
-                <th scope="col">Height</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Disease</th>      
-                <th scope="col">Address</th>
-                <th scope="col">Mobile</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Username</th>
+                <th scope="col">Request Date</th>
+                
               </tr>
             </thead>
-<%
+
+          
+
+         
+<% 
 try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from donuser";
+String sql ="select * from donate";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 %>
 <tr>
 <td><%=resultSet.getString("name") %></td>
-<td><%=resultSet.getString("username") %></td>
-
-<td><%=resultSet.getString("gender") %></td>
-<td><%=resultSet.getString("bloodgroup") %></td>
-<td><%=resultSet.getString("age") %></td>
-<td><%=resultSet.getString("height") %></td>
-<td><%=resultSet.getString("weight") %></td>
 <td><%=resultSet.getString("disease") %></td>
-<td><%=resultSet.getString("address") %></td>
-<td><%=resultSet.getString("mobile") %></td>
+<td><%=resultSet.getString("age") %></td>
+<td><%=resultSet.getString("bloodgroup") %></td>
+<td><%=resultSet.getString("username") %></td><td>
+                    <input type="text" name=approve>
+                    <input type="submit" class="btn btn--radius-2 btn-primary" style="margin: 6px; width:112px;" value="APPROVE" name="submit">
+              
+              </td>
+            </tr>
 
-</tr>
+                
 <%
 }
 connection.close();
@@ -336,7 +334,19 @@ connection.close();
 e.printStackTrace();
 }
 %>
-</table> 
+ 
 
+
+         
+         
+
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+  
+  </form>
 </body>
 </html>

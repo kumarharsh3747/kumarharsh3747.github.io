@@ -254,7 +254,7 @@ margin: 63px 19px;
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="patient-dash.html" class="nav-link text-white" aria-current="page">
+          <a href="patient-dash.jsp" class="nav-link text-white" aria-current="page">
             <i class="fas fa-home">
               <use xlink:href="#home"></use>
           </i>
@@ -268,7 +268,7 @@ margin: 63px 19px;
           </a>
         </li> 
         <li>
-          <a href="request-history.html" class="nav-link active">
+          <a href="request-history.jsp" class="nav-link active">
             <i class="fas fa-history"></i>&nbsp;&nbsp;Request History
           </a>
         </li>

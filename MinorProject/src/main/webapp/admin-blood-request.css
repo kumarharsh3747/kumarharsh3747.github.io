@@ -1,0 +1,110 @@
+    * {
+      /* box-sizing: border-box; */
+      margin: 0;
+      padding: 0;
+      font-family: 'Oswald', sans-serif;
+      font-family: 'Tiro Gurmukhi', serif;
+      font-family: 'Ubuntu', sans-serif
+        /* font-size: 18px; */
+        /* background-color: #24252A; */
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+
+      height: 50px;
+      background-color: red;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 3%;
+
+
+    }
+
+    .logo {
+      cursor: pointer;
+      margin-right: auto;
+
+
+    }
+
+    .nav__links {
+      list-style: none;
+    }
+
+    .nav__links li {
+      margin: 0px 2px;
+      display: inline-block;
+      padding: 0px 30px;
+    }
+
+    .nav__links li a {
+      transition: all 0.3s ease 0s;
+    }
+
+    .nav__links li a:hover {
+      color: gray;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+
+    .bar {
+      height: 695px;
+    }
+
+    .side-bar {
+      display: flex;
+    }
+
+    .main {
+
+      width: 88%;
+      /* background-color: #F3F5F9; */
+      padding-left: 42px;
+      padding-right: 42px;
+
+      height: 639px;
+
+      margin-top: 50px;
+      margin-left: 203px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .col {
+      height: 140px;
+
+    }
+
+    .blood {
+      float: right;
+    }
+
+    .val {
+      margin-left: 12px;
+      margin-top: 31px;
+      font-size: 24px
+    }
+
+    .card-border {
+      border: 2px solid rgb(95, 102, 107);
+      margin-top: 3px;
+      background-color: white;
+    }
+  

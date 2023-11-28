@@ -256,14 +256,14 @@ ResultSet resultSet = null;
 
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar" style="    position: fixed;
     margin-top: 50px;">
-      <a href="donor-dash.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <a href="Donor-dash.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <h3 style="margin-left: 16px;
         margin-bottom: auto;">Dashboard</h3>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="donor-dash.html" class="nav-link text-white" aria-current="page">
+          <a href="Donor-dash.jsp" class="nav-link text-white" aria-current="page">
             <i class="fas fa-home">
               <use xlink:href="#home"></use>
             </i>
@@ -277,7 +277,7 @@ ResultSet resultSet = null;
           </a>
         </li>
         <li>
-          <a href="donation-history.html" class="nav-link active">
+          <a href="donation-history.jsp" class="nav-link active">
             <i class="fas fa-history"></i>&nbsp;&nbsp;Donation History
           </a>
         </li>
@@ -317,6 +317,7 @@ ResultSet resultSet = null;
           style="text-align: center;  vertical-align: middle; background-color: #F3F5F9;">
           <thead class="table-dark">
             <tr>
+            <th scope="col" style="text-align:center;">Username</th>
               <th scope="col" style="text-align:center;">Name</th>
               <th scope="col" style="text-align:center;">Disease</th>
               <th scope="col" style="text-align:center;">Age</th>
@@ -333,6 +334,7 @@ ResultSet resultSet = null;
 					while(resultSet.next()){
 					%>
 					<tr>
+					<td><%=resultSet.getString("username") %></td>
 					<td><%=resultSet.getString("name") %></td>
 					
 					<td><%=resultSet.getString("disease") %></td>

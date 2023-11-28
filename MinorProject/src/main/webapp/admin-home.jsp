@@ -2,6 +2,7 @@
 <%@ page import="javax.naming.*, javax.sql.*" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,11 +14,9 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        
-        <!-- logo  -->
-        <link rel="icon" href="../logo.png" type="image/icon type">
-    
-    
+
+         <!-- logo  -->
+         <link rel="icon" href="../logo.png" type="image/icon type">
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +26,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="admin-blood-stock.css">
-    <title>Admin</title>
 
-
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-home.css">
 </head>
 
 <body>
-
-	<form action="bldstock" method="post">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
@@ -50,18 +46,7 @@
 
         <nav>
 
-            <!-- <ul class="nav__links" style="margin-top: 14px">
-                <li><a href="http://localhost/BBMS/index.html"><i class="fas fa-home"></i>&nbsp;Home</i></a></li>
-
-
-
-                <li><a href="#"><i class="fas fa-procedures"></i>&nbsp; Patient</i></a>
-                </li>
-                <li><a href="../donor/donor-login.html"><i class="fas fa-user"></i>&nbsp; Donor</i></a>
-                </li>
-                <li><a href="admin-login.html"><i class="fas fa-user-shield"></i>&nbsp; Admin</i></a>
-                </li>
-            </ul> -->
+           
             </div>
         </nav>
 
@@ -79,7 +64,7 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="admin-home.jsp" class="nav-link text-white" aria-current="page">
+                    <a href="admin-home.html" class="nav-link active" aria-current="page">
                         <i class="fas fa-home">
 
                         </i>
@@ -117,7 +102,7 @@
                         <i class="fas fa-sync-alt">
                             <use xlink:href="#people-circle"></use>
                         </i>
-                        &nbsp;Blood Request
+                        &nbsp;Blood Requests
                     </a>
                 </li>
                 <!-- <li>
@@ -125,11 +110,11 @@
                         <i class="fas fa-history">
                             <use xlink:href="#people-circle"></use>
                         </i>
-                        &nbsp;bloodstock History
+                        &nbsp;Request History
                     </a>
                 </li> -->
                 <li>
-                    <a href="admin-blood-stock.jsp" class="nav-link active">
+                    <a href="admin-blood-stock.jsp" class="nav-link text-white">
                         <i class="fas fa-ambulance">
                             <use xlink:href="#people-circle"></use>
                         </i>
@@ -160,21 +145,7 @@
         
 <!-- main content -->
 
-        <div class="main">
-            <div class="cont-box">
-
-                <!-- row-1 -->
-
-                <div class="row">
-                    <div class="col">
-                        <div class="card-border">
-                            <div style=" padding-right: 19px; padding-bottom: 46px;  padding-top: 13px;">
-                                <div class="blood">
-                                    <h2>A+ <i class="fas fa-tint" style="color: red;"></i></h2>
-                                </div>
-                            </div>      
-
-<%
+       <%
                             Connection connection = null;
                             Statement statement = null;
                             ResultSet resultSet = null;
@@ -186,7 +157,7 @@
 
                                 // Use proper SQL syntax for counting rows with a specific condition
                                 resultSet = statement.executeQuery("SELECT SUM(UNIT) FROM bloodstock WHERE bloodgroup='A+'");
-                                resultSet = statement.executeQuery("SELECT SUM(UNIT) FROM bloodstock WHERE bloodgroup='A+'");
+                                
                                 int aPositiveCount = resultSet.next() ? resultSet.getInt(1) : 0;
 
                                 resultSet = statement.executeQuery("SELECT SUM(UNIT) FROM bloodstock WHERE bloodgroup='A-'");
@@ -206,15 +177,37 @@
                                 
                                 resultSet = statement.executeQuery("SELECT SUM(UNIT) FROM bloodstock WHERE bloodgroup='O+'");
                                 int oPositiveCount = resultSet.next() ? resultSet.getInt(1) : 0;
-
                                 resultSet = statement.executeQuery("SELECT SUM(UNIT) FROM bloodstock WHERE bloodgroup='O-'");
                                 int oNegativeCount = resultSet.next() ? resultSet.getInt(1) : 0;
+
+                                resultSet = statement.executeQuery("SELECT COUNT(*) FROM donuser");
+                                int donCount = resultSet.next() ? resultSet.getInt(1) : 0;
+                                resultSet = statement.executeQuery("SELECT COUNT(*) FROM request");
+                                int requestCount = resultSet.next() ? resultSet.getInt(1) : 0;
+                                
+                                resultSet = statement.executeQuery("SELECT SUM(UNIT) FROM bloodstock ");
+                                int unitCount = resultSet.next() ? resultSet.getInt(1) : 0;
+
+
 
                                 // Repeat similar queries for other blood groups
 
                         %>
-                        <div class="val">
-                           <p><%= aPositiveCount %></p>
+                       <div class="main">
+            <div class="cont-box">
+
+                <!-- row-1 -->
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card-border">
+                            <div style=" padding-right: 19px; padding-bottom: 46px;  padding-top: 13px;">
+                                <div class="blood">
+                                    <h2>A+ <i class="fas fa-tint" style="color: red;"></i></h2>
+                                </div>
+                            </div>
+                            <div class="val">
+                                                          <p> <%= aPositiveCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -227,7 +220,7 @@
                                 </div>
                             </div>
                             <div class="val">
-                          <p> <%= bPositiveCount %></p>
+                           <p> <%= bPositiveCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -239,7 +232,7 @@
                                 </div>
                             </div>
                             <div class="val">
-                         <p> <%= abPositiveCount %></p>
+                           <p> <%= abPositiveCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -251,7 +244,7 @@
                                 </div>
                             </div>
                             <div class="val">
-                            <p><%= oPositiveCount %></p>
+                            <p> <%= oPositiveCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -270,7 +263,7 @@
                                 </div>
                             </div>
                             <div class="val">
-                          <p><%= aNegativeCount %></p>
+                           <p> <%= aNegativeCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -282,7 +275,7 @@
                                 </div>
                             </div>
                             <div class="val">
-                        <p><%= bNegativeCount %></p>
+                          <p> <%= bNegativeCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -294,7 +287,8 @@
                                 </div>
                             </div>
                             <div class="val">
-                          <p><%= abNegativeCount %></p>
+                            <p> <%= abNegativeCount %></p> 
+                            
                             </div>
                         </div>
                     </div>
@@ -306,7 +300,7 @@
                                 </div>
                             </div>
                             <div class="val">
-                           <p><%= oNegativeCount %></p>
+                               <p> <%= oNegativeCount %></p> 
                             </div>
                         </div>
                     </div>
@@ -317,34 +311,60 @@
             <br>
             <hr>
             <br>
-
-            <h2 style="text-align: center;">Update Blood Unit</h2><br>
-            <form action="" method="post" style="text-align: center;">
-                <select class="form-select form-select-sm" required aria-label=".form-select-sm example" style="width: 168px; display: inline; margin-left: 50px;"  name="bgroup">
-                    <option selected>Select Blood Group</option>
-                    <option value="A+">A+</option>
-                    <option value="B+">B+</option>
-                    <option value="AB+">AB+</option>
-                    <option value="O+">O+</option>
-                    <option value="A-">A-</option>
-                    <option value="B-">B-</option>
-                    <option value="AB-">AB-</option>
-                    <option value="O-">O-</option>
-                  </select>
-                  <input type="number" name="unit" placeholder="Unit" required style="margin-left: 40px;">
-                  <input type="submit" value="Update"  class="btn btn--radius-2 btn-primary" style="padding: 2px 8px; margin-left: 20px;" name="update">
-            </form>
+        <!-- row 3 -->
+            <div class="row">
+                    <div class="col">
+                        <div class="card-border">
+                            <div style=" padding-right: 19px; padding-bottom: 46px;  padding-top: 13px;">
+                                <div class="blood">
+                                    <h2><i class="fas fa-users" style="color: blue;"></i></h2>
+                                </div>
+                            </div>
+                            <div class="val" style="margin-top: 0px;">
+                                Total Donors
+                                <br> <p> <%= donCount %></p> 
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col">
+                        <div class="card-border">
+                        <div style=" padding-right: 19px; padding-bottom: 46px;  padding-top: 13px;">
+                                <div class="blood">
+                                    <h2><i class="fas fa-spinner" style="color: blue;"></i></h2>
+                                </div>
+                            </div>
+                            <div class="val" style="margin-top: 0px;">
+                                Total Requests
+                                <br> <p> <%= requestCount %></p> 
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col">
+                        <div class="card-border">
+                        <div style=" padding-right: 19px; padding-bottom: 46px;  padding-top: 13px;">
+                                <div class="blood">
+                                    <h2><i class="fas fa-tint" style="color: blue;"></i></h2>
+                                </div>
+                            </div>
+                            <div class="val" style="margin-top: 0px;">
+                                Total Blood Unit
+                                <br> <p> <%= unitCount %></p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        
 
         </div>
     </div>
 
 
-                            
-                            
-                            <!-- Add similar lines for other blood groups -->
-                        </div>
 
-                        <%
+
+<%
                             } catch (Exception e) {
                                 e.printStackTrace();
                             } finally {

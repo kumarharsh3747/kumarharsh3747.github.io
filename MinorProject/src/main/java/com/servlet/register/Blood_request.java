@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Blood_request extends HttpServlet{
 
     //create the query
-    private static final String INSERT_QUERY ="INSERT INTO REQUEST(name,age,reason,bgroup,unit) VALUES(?,?,?,?,?)";
+    private static final String INSERT_QUERY ="INSERT INTO REQUEST(name,age,reason,bgroup,unit, status) VALUES(?,?,?,?,?,?)";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -32,11 +32,10 @@ public class Blood_request extends HttpServlet{
         int age=Integer.parseInt(req.getParameter("p_age"));
         String reason = req.getParameter("reason");
         
-        
         String bloodgroup = req.getParameter("p_bgroup");
         int unit=Integer.parseInt(req.getParameter("p_unit"));
 
-       
+        String status = req.getParameter("approve");
         
         
      
@@ -59,7 +58,7 @@ public class Blood_request extends HttpServlet{
             
             ps.setString(4,bloodgroup );
             ps.setInt(5,unit);
-            
+            ps.setString(6,status);
             
             //execute the query
             int count = ps.executeUpdate();

@@ -59,7 +59,7 @@
 border-radius: 20px;
 background-color: white;
 max-width: 730px;
-height: 464px;
+height: 484px;
 margin: 35px auto;
 box-sizing: border-box;
 padding: 0;
@@ -69,7 +69,7 @@ display: block;
 .in {
 
 /* padding: -10px 14px; */
-height: 50px;
+height: 32px;
 margin: 63px 19px;
 
 }
@@ -215,14 +215,14 @@ margin: 63px 19px;
     <div class="side-bar">
 
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar">
-      <a href="Donor-dash.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <a href="Donor-dash.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <h3 style="margin-left: 16px;
         margin-bottom: auto;">Dashboard</h3>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="Donor-dash.html" class="nav-link text-white" aria-current="page">
+          <a href="Donor-dash.jsp" class="nav-link text-white" aria-current="page">
             <i class="fas fa-home">
               <use xlink:href="#home"></use>
           </i>
@@ -274,6 +274,7 @@ margin: 63px 19px;
 
                     <form method="post">
                         <div class="form-body">
+                          
                             <div class="in" style="margin-left:46px;margin-top: 20px;margin-bottom: 14px;">
                                 <label for="name" style="font-size: 18px">Name</label>
                                 <input type="text" name="name" required id="name" placeholder="Name"
@@ -288,11 +289,22 @@ margin: 63px 19px;
                                 <input type="text" name="age" required placeholder="age"
                                     class="in-sty">
                             </div>
+                            
+                             <div class="in" style="margin-top: 40px;margin-left: -27px;margin-bottom: 14px;">
+                                <label for="bgroup" style="font-size: 18px">BloodGroup</label>
+                                <input type="text" name="bgroup" required  class="in-sty" placeholder="bloodgroup">
+                            </div>
+                            
+                             <div class="in" style=" margin-top: 36px; margin-left: 10px; margin-bottom: 14px;">
+                            <label for="username" style="font-size: 18px">username</label>
+                                <input type="text" name="un" required placeholder="username"
+                                    class="in-sty">
+                            </div>
 
                             <div style=" margin-left: 54px;
                 height: 6px;">
                                 <input class="btn btn--radius-2 btn-danger" type="submit" value="Donate" name="sub"
-                                    style="width: 94px;
+                                    style="width: 94px; margin-left: 200px;;
                   height: 47px;">
                             </div>
                         </div>

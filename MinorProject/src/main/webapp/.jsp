@@ -3,7 +3,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%
-String id = request.getParameter("");
+String id = request.getParameter("request");
 String driver = "com.mysql.cj.jdbc.Driver";
 String connectionUrl = "jdbc:mysql://localhost:3306/";
 String database = "1page";
@@ -29,9 +29,11 @@ ResultSet resultSet = null;
   <!-- icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <!-- logo  -->
+    <link rel="icon" href="../logo.png" type="image/icon type">
 
-     <!-- logo  -->
-     <link rel="icon" href="../logo.png" type="image/icon type">
+
 
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +44,7 @@ ResultSet resultSet = null;
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
-  <title>Donors Details</title>
+  <title>Blood Requests Details</title>
 
   <style>
     * {
@@ -122,9 +124,9 @@ ResultSet resultSet = null;
       /* background-color: #F3F5F9; */
       padding-left: 42px;
       padding-right: 42px;
-      
+
       height: 639px;
-    
+
       margin-top: 50px;
       margin-left: 203px;
     }
@@ -136,7 +138,7 @@ ResultSet resultSet = null;
 
     .col {
       height: 140px;
-    
+
     }
 
     .blood {
@@ -159,6 +161,9 @@ ResultSet resultSet = null;
 </head>
 
 <body>
+
+<form action="request1" method="post">
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
@@ -167,7 +172,7 @@ ResultSet resultSet = null;
   <header>
 
 
-    <a href="index.html" class="logo"> <i class="fas fa-heartbeat"
+    <a href="http://localhost/BBMS/index.html" class="logo"> <i class="fas fa-heartbeat"
         style='font-size:23px;color:white'></i>
       <b style="font-size: 23px">&nbsp;Blood Bank Management</b></a>
 
@@ -192,58 +197,58 @@ ResultSet resultSet = null;
   <!-- side bar -->
   <div class="side-bar">
 
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar" style="position: fixed; margin-top: 50px;">
-            <a href="admin-home.jsp"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar" style="position: fixed; margin-top: 50px;">
+      <a href="admin-home.html"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
-                <h3 style="margin-left: 16px;
+        <h3 style="margin-left: 16px;
         margin-bottom: auto;">Dashboard</h3>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a href="admin-home.jsp" class="nav-link text-white" aria-current="page">
-                  <i class="fas fa-home">
-                    <use xlink:href="#home"></use>
-                  </i>
-                  &nbsp;Home
-                </a>
-              </li>
-              <li>
-                <a href="donor-list.jsp" class="nav-link active">
-                  <i class="fas fa-user">
-                    <use xlink:href="#speedometer2"></use>
-                  </i>
-                  &nbsp;Donor
-      
-      
-                </a>
-              </li>
-              <li>
-                <a href="patient-list.jsp" class="nav-link text-white">
-                  <i class="fas fa-user-injured">
-                    <use xlink:href="#table"></use>
-                  </i>
-                  &nbsp; Patient
-                </a>
-              </li>
-              <li>
-                <a href="admin-donation.jsp" class="nav-link text-white">
-                  <i class="far fa-heart">
-                    <use xlink:href="#grid"></use>
-                  </i>
-                  &nbsp; Donations
-                </a>
-              </li>
-              <li>
-                <a href="admin-blood-request.jsp" class="nav-link text-white">
-                  <i class="fas fa-sync-alt">
-                    <use xlink:href="#people-circle"></use>
-                  </i>
-                  &nbsp;Blood Requests
-                </a>
-              </li>
-              <!-- <li>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="admin-home.html" class="nav-link text-white" aria-current="page">
+            <i class="fas fa-home">
+              <use xlink:href="#home"></use>
+            </i>
+            &nbsp;Home
+          </a>
+        </li>
+        <li>
+          <a href="donor-list.html" class="nav-link  text-white">
+            <i class="fas fa-user">
+              <use xlink:href="#speedometer2"></use>
+            </i>
+            &nbsp;Donor
+
+
+          </a>
+        </li>
+        <li>
+          <a href="patient-list.html" class="nav-link text-white">
+            <i class="fas fa-user-injured">
+              <use xlink:href="#table"></use>
+            </i>
+            &nbsp; Patient
+          </a>
+        </li>
+        <li>
+          <a href="admin-donation.html" class="nav-link text-white">
+            <i class="far fa-heart">
+              <use xlink:href="#grid"></use>
+            </i>
+            &nbsp; Donations
+          </a>
+        </li>
+        <li>
+          <a href="admin-blood-request.html" class="nav-link active">
+            <i class="fas fa-sync-alt">
+              <use xlink:href="#people-circle"></use>
+            </i>
+            &nbsp;Blood Requests
+          </a>
+        </li>
+        <!-- <li>
                 <a href="#" class="nav-link text-white">
                   <i class="fas fa-history">
                     <use xlink:href="#people-circle"></use>
@@ -251,33 +256,33 @@ ResultSet resultSet = null;
                   &nbsp;Request History
                 </a>
               </li> -->
-              <li>
-                <a href="admin-blood-stock.jsp" class="nav-link text-white">
-                  <i class="fas fa-ambulance">
-                    <use xlink:href="#people-circle"></use>
-                  </i>
-                  &nbsp;Blood Stock
-                </a>
-              </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser2"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user" width="32" height="32" class="rounded-circle me-2"></i>
-                <strong>&nbsp;&nbsp;&nbsp;Admin&nbsp;</strong>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser2">
-                <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li>
+          <a href="admin-blood-stock.html" class="nav-link text-white">
+            <i class="fas fa-ambulance">
+              <use xlink:href="#people-circle"></use>
+            </i>
+            &nbsp;Blood Stock
+          </a>
+        </li>
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser2"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user" width="32" height="32" class="rounded-circle me-2"></i>
+          <strong>&nbsp;&nbsp;&nbsp;Admin&nbsp;</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser2">
+          <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li> -->
-                <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li> -->
-                <li><a class="dropdown-item" href="admin-login.html">Sign out</a></li>
-              </ul>
-            </div>
-          </div>
+          <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li> -->
+          <li><a class="dropdown-item" href="admin-login.html">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
 
 
 
@@ -286,49 +291,47 @@ ResultSet resultSet = null;
     <!-- main content -->
 
     <div class="main">
-        <div class="cont-card">
-          <h2 style="text-align: center; margin-top: 36px;">DONOR DETAILS</h2>
-          <br>
+      <div class="cont-card">
+        <h2 style="text-align: center; margin-top: 36px;">BLOOD REQUEST DETAILS</h2>
+        <br>
+        
+        <table class="table table-bordered"
+          style="text-align: center;  vertical-align: middle; background-color: #F3F5F9;">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Reason</th>
+              <th scope="col">Blood Group</th>
+              <th scope="col">Unit</th>
+              
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
           
-          <table class="table table-bordered" style="text-align: center;  vertical-align: middle; background-color: #F3F5F9;">
-            <thead class="table-dark">
-              <tr>
-                
-                <th scope="col">Name</th>
-                <th scope="col">username</th>
-                
-                <th scope="col">Gender</th>
-                <th scope="col">Blood Group</th>
-                <th scope="col">Age</th>
-                <th scope="col">Height</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Disease</th>      
-                <th scope="col">Address</th>
-                <th scope="col">Mobile</th>
-              </tr>
-            </thead>
-<%
+
+         
+<% 
 try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from donuser";
+String sql ="select * from request";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 %>
 <tr>
 <td><%=resultSet.getString("name") %></td>
-<td><%=resultSet.getString("username") %></td>
-
-<td><%=resultSet.getString("gender") %></td>
-<td><%=resultSet.getString("bloodgroup") %></td>
 <td><%=resultSet.getString("age") %></td>
-<td><%=resultSet.getString("height") %></td>
-<td><%=resultSet.getString("weight") %></td>
-<td><%=resultSet.getString("disease") %></td>
-<td><%=resultSet.getString("address") %></td>
-<td><%=resultSet.getString("mobile") %></td>
+<td><%=resultSet.getString("reason") %></td>
+<td><%=resultSet.getString("bgroup") %></td>
+<td><%=resultSet.getString("unit") %></td><td>
+                    <input type="text" name=approve>
+                    <input type="submit" class="btn btn--radius-2 btn-primary" style="margin: 6px; width:112px;" value="APPROVE" name="submit">
+              
+              </td>
+            </tr>
 
-</tr>
+                
 <%
 }
 connection.close();
@@ -336,7 +339,19 @@ connection.close();
 e.printStackTrace();
 }
 %>
-</table> 
+ 
 
+
+          </tbody>
+         
+
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+  
+  </form>
 </body>
 </html>

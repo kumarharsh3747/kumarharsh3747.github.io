@@ -193,7 +193,7 @@ ResultSet resultSet = null;
   <div class="side-bar">
 
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bar" style="position: fixed; margin-top: 50px;">
-            <a href="admin-home.html"
+            <a href="admin-home.jsp"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
                 <h3 style="margin-left: 16px;
@@ -202,7 +202,7 @@ ResultSet resultSet = null;
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="admin-home.html" class="nav-link text-white" aria-current="page">
+                <a href="admin-home.jsp" class="nav-link text-white" aria-current="page">
                   <i class="fas fa-home">
                     <use xlink:href="#home"></use>
                   </i>
