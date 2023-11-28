@@ -29,7 +29,8 @@
 </head>
 
 <body>
-	<form action="pregister" method="get">
+	
+	<form id="donorForm" action="pregister" method="post" onsubmit="return validateForm()">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
@@ -86,11 +87,9 @@
                                 <input type="password" required name="ps" id="password" placeholder="Password" class="in-sty" >
                             </div>
                             
-                            <script src="myScript.js"></script>
-                            
                             <span id="passwordError" style="color: red;"></span>
                             
-
+							 <script src="myScript.js"></script>
                             
                             <div class="in" style="display: inline; margin: 20px 50px">
                             <div class="form-check form-check-inline">
@@ -118,10 +117,12 @@
 
                             <div class="in" style="margin-left: 67px;">
                                 <label for="age" style="font-size: 18px">age</label>
-                                <input type="text" name="age" required autofocus placeholder="age"
+                                <input type="text" name="age" id="age" autofocus placeholder="age"
                                     class="in-sty">
                             </div>
-
+                            <span id="ageError" style="color: red;"></span>
+							
+									<script src="myScript1.js"></script>
                             
                             <div class="in" style="margin-left: 27px;">
                                 <label for="disease" style="font-size: 18px">Disease</label>
@@ -142,10 +143,12 @@
                             
                             <div class="in" style="margin-left: -30px;">
                                 <label for="mobile number" style="font-size: 18px;">Mobile Number</label>
-                                <input type="number" name="mob" required autofocus placeholder="Number"
+                                <input type="number" name="mob" id="mobileNumber" autofocus placeholder="Number"
                                     class="in-sty">
                             </div>
-
+							<span id="mobileNumberError" style="color: red;"></span>
+							<script src="myScript2.js"></script>
+							
                             <div class="in" style="margin: 12px 0px;">
                                 <label for="profile picture" style="font-size: 18px">Profile Picture</label>
                                 <input type="file" required name="pic" >

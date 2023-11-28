@@ -159,6 +159,8 @@ ResultSet resultSet = null;
 </head>
 
 <body>
+
+<form action="request5" method="post">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
@@ -298,7 +300,7 @@ ResultSet resultSet = null;
                 <th scope="col">Age</th>
                 <th scope="col">Blood Group</th>
                 <th scope="col">Username</th>
-                <th scope="col">Request Date</th>
+                <th scope="col">Date and Status</th>
                 
               </tr>
             </thead>
@@ -313,6 +315,8 @@ statement=connection.createStatement();
 String sql ="select * from donate";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
+	String donor = resultSet.getString("name");
+	String currentStatus = resultSet.getString("status");
 %>
 <tr>
 <td><%=resultSet.getString("name") %></td>
@@ -320,9 +324,11 @@ while(resultSet.next()){
 <td><%=resultSet.getString("age") %></td>
 <td><%=resultSet.getString("bloodgroup") %></td>
 <td><%=resultSet.getString("username") %></td><td>
-                    <input type="text" name=approve>
+
+
+                    <label for="<%= donor %>">Status for <%= donor %>:</label>
+                        <input type="text" name="<%= donor %>" value="<%= currentStatus %>" />
                     <input type="submit" class="btn btn--radius-2 btn-primary" style="margin: 6px; width:112px;" value="APPROVE" name="submit">
-              
               </td>
             </tr>
 

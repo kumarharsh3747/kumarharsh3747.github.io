@@ -308,8 +308,8 @@ margin: 63px 19px;
                 <th scope="col" style="text-align:center;">Reason</th>
                 <th scope="col" style="text-align:center;">Blood Group</th>
                 <th scope="col" style="text-align:center;">Unit</th>
-                <th scope="col" style="text-align:center;">Date and Time</th>
-                <th scope="col" style="text-align:center;">status</th>
+                <th scope="col" style="text-align:center;">Date and Status</th>
+                
               </tr>
             </thead>
 <%
@@ -326,6 +326,7 @@ while(resultSet.next()){
 <td><%=resultSet.getString("reason") %></td>
 <td><%=resultSet.getString("bgroup") %></td>
 <td><%=resultSet.getString("unit") %></td>
+<td><%=resultSet.getString("status") %></td>
 
 </tr>
 <%

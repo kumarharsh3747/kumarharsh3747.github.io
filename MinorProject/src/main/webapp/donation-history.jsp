@@ -321,8 +321,8 @@ ResultSet resultSet = null;
               <th scope="col" style="text-align:center;">Name</th>
               <th scope="col" style="text-align:center;">Disease</th>
               <th scope="col" style="text-align:center;">Age</th>
-              <th scope="col" style="text-align:center;">Date and Time</th>
-              <th scope="col" style="text-align:center;">Status</th>
+              <th scope="col" style="text-align:center;">Date and status</th>
+             
             </tr>
           </thead>
 				<%
@@ -339,6 +339,8 @@ ResultSet resultSet = null;
 					
 					<td><%=resultSet.getString("disease") %></td>
 					<td><%=resultSet.getString("age") %></td>
+					
+					<td><%=resultSet.getString("status") %></td>
 					
 
 					</tr>

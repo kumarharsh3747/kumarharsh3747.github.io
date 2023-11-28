@@ -46,7 +46,117 @@ ResultSet resultSet = null;
 
   <title>Blood Requests Details</title>
 
-<link rel="stylesheet" href="admin-blood-request.css">
+  <style>
+    * {
+      /* box-sizing: border-box; */
+      margin: 0;
+      padding: 0;
+      font-family: 'Oswald', sans-serif;
+      font-family: 'Tiro Gurmukhi', serif;
+      font-family: 'Ubuntu', sans-serif
+        /* font-size: 18px; */
+        /* background-color: #24252A; */
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+
+      height: 50px;
+      background-color: red;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 3%;
+
+
+    }
+
+    .logo {
+      cursor: pointer;
+      margin-right: auto;
+
+
+    }
+
+    .nav__links {
+      list-style: none;
+    }
+
+    .nav__links li {
+      margin: 0px 2px;
+      display: inline-block;
+      padding: 0px 30px;
+    }
+
+    .nav__links li a {
+      transition: all 0.3s ease 0s;
+    }
+
+    .nav__links li a:hover {
+      color: gray;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+
+    .bar {
+      height: 695px;
+    }
+
+    .side-bar {
+      display: flex;
+    }
+
+    .main {
+
+      width: 88%;
+      /* background-color: #F3F5F9; */
+      padding-left: 42px;
+      padding-right: 42px;
+
+      height: 639px;
+
+      margin-top: 50px;
+      margin-left: 203px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .col {
+      height: 140px;
+
+    }
+
+    .blood {
+      float: right;
+    }
+
+    .val {
+      margin-left: 12px;
+      margin-top: 31px;
+      font-size: 24px
+    }
+
+    .card-border {
+      border: 2px solid rgb(95, 102, 107);
+      margin-top: 3px;
+      background-color: white;
+    }
+  </style>
 
 </head>
 
@@ -56,13 +166,14 @@ ResultSet resultSet = null;
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    ++++++++++++++++++++++++++++++++++++++++++++++++
     crossorigin="anonymous"></script>
 
 
   <header>
 
 
-    <a href="http:index.html" class="logo"> <i class="fas fa-heartbeat"
+    <a href="http://localhost/BBMS/index.html" class="logo"> <i class="fas fa-heartbeat"
         style='font-size:23px;color:white'></i>
       <b style="font-size: 23px">&nbsp;Blood Bank Management</b></a>
 
@@ -194,8 +305,9 @@ ResultSet resultSet = null;
               <th scope="col">Reason</th>
               <th scope="col">Blood Group</th>
               <th scope="col">Unit</th>
-            
-              <th scope="col">Action</th>
+              
+              
+              <th scope="col">Date and Status</th>
             </tr>
           </thead>
           
@@ -206,26 +318,23 @@ try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
 String sql ="select * from request";
+
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
+	String patientName = resultSet.getString("name");
+	String currentStatus = resultSet.getString("status");
 %>
 <tr>
 <td><%=resultSet.getString("name") %></td>
 <td><%=resultSet.getString("age") %></td>
 <td><%=resultSet.getString("reason") %></td>
 <td><%=resultSet.getString("bgroup") %></td>
-<td><%=resultSet.getString("unit") %><!-- </td><td>
-					
-					 <input type="text" name=usname>
-                    
-</td><td>			
-<input type="text" name=name1>
-                    --> 
-</td><td>
-                    <input type="text" name=approve>
+<td><%=resultSet.getString("unit") %></td>
+
+<td>
+                    <label for="<%= patientName %>">Status for <%= patientName %>:</label>
+                        <input type="text" name="<%= patientName %>" value="<%= currentStatus %>" />
                     <input type="submit" class="btn btn--radius-2 btn-primary" style="margin: 6px; width:112px;" value="APPROVE" name="submit">
-                   
-              
               </td>
             </tr>
 

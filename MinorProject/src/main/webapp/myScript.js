@@ -1,5 +1,4 @@
-
-    document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", function () {
         // Function to validate the password
         function validatePassword() {
             var passwordInput = document.getElementById("password");
@@ -42,3 +41,5 @@
         // Validate the password on input change
         document.getElementById("password").addEventListener("input", validatePassword);
     });
+    
+    
